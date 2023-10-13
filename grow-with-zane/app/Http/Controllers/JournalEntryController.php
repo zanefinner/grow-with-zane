@@ -1,43 +1,81 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\JournalEntry;
+use App\Models\GrowJournals;
 use Illuminate\Http\Request;
 
 class JournalEntryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index($id)
     {
-        // Display a list of journal entries for a specific grow journal
+        $growJournal = GrowJournals::findOrFail($id);
+        $entries = $growJournal->entries;
+        return view('journal_entries.index', compact('growJournal', 'entries'));
     }
 
     public function create($id)
     {
-        // Show the form to create a new journal entry for a specific grow journal
+        $growJournal = GrowJournals::findOrFail($id);
+        return view('journal_entries.create', compact('growJournal'));
     }
 
     public function store(Request $request, $id)
     {
-        // Store a new journal entry for a specific grow journal
+        $data = $request->validate([
+            'entry_date' => 'required|date',
+            'notes' => 'nullable|string',
+            'image_path' => 'nullable|string',
+        ]);
+
+        $growJournal = GrowJournals::findOrFail($id);
+        $entry = $growJournal->entries()->create($data);
+
+        return redirect()->route('journal_entries.show', [$growJournal->id, $entry->id])
+            ->with('success', 'Journal Entry created successfully');
     }
 
     public function show($id, $entry_id)
     {
-        // Display a specific journal entry
+        $growJournal = GrowJournals::findOrFail($id);
+        $entry = $growJournal->entries()->findOrFail($entry_id);
+        return view('journal_entries.show', compact('growJournal', 'entry'));
     }
 
     public function edit($id, $entry_id)
     {
-        // Show the form to edit a specific journal entry
+        $growJournal = GrowJournals::findOrFail($id);
+        $entry = $growJournal->entries()->findOrFail($entry_id);
+        return view('journal_entries.edit', compact('growJournal', 'entry'));
     }
 
     public function update(Request $request, $id, $entry_id)
     {
-        // Update a specific journal entry
+        $data = $request->validate([
+            'entry_date' => 'required|date',
+            'notes' => 'nullable|string',
+            'image_path' => 'nullable|string',
+        ]);
+
+        $growJournal = GrowJournals::findOrFail($id);
+        $entry = $growJournal->entries()->findOrFail($entry_id);
+        $entry->update($data);
+
+        return redirect()->route('journal_entries.show', [$growJournal->id, $entry->id])
+            ->with('success', 'Journal Entry updated successfully');
     }
 
     public function destroy($id, $entry_id)
     {
-        // Delete a specific journal entry
+        $growJournal = GrowJournals::findOrFail($id);
+        $entry = $growJournal->entries()->findOrFail($entry_id);
+        $entry->delete();
+
+        return redirect()->route('journal_entries.index', $growJournal->id)
+            ->with('success', 'Journal Entry deleted successfully');
     }
 }

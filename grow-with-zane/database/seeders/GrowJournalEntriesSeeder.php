@@ -12,7 +12,7 @@ class GrowJournalEntriesSeeder extends Seeder
     public function run()
     {
         // Create sample journal entries with random data
-        for ($i = 1; $i <= 20; $i++) { // Create 20 entries
+        for ($i = 1; $i <= 2000; $i++) { // Create 20 entries
             GrowJournalEntries::create([
                 'journal_id' => rand(1, 10), // Randomly assign to grow journals 1-10
                 'entry_date' => now()->subDays(rand(1, 30)), // Random date within the last 30 days

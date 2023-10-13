@@ -18,7 +18,7 @@ class GrowJournalsSeeder extends Seeder
         $faker = Faker::create();
 
         // Create sample grow journals with random data
-        for ($i = 1; $i <= 10; $i++) { // Create 10 journals
+        for ($i = 1; $i <= 2000; $i++) { // Create 10 journals
             GrowJournals::create([
                 'title' => $faker->sentence,
                 'description' => $faker->paragraph,
