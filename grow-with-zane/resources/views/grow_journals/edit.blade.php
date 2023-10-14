@@ -15,6 +15,6 @@
             <textarea name="description" id="description" class="form-control" rows="4">{{ $growJournal->description }}</textarea>
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
-    </form>
-    <a href="{{ route('grow_journals.show', $growJournal->id) }}" class="btn btn-secondary">Cancel</a>
+    </form><a href="{{ route('grow_journals.show', $growJournal->id) }}" class="btn btn-secondary">Cancel</a>
 </div>
+@endsection

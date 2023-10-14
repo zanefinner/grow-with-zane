@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    <style>
+        .upper-margin{
+            margin-top: 40px;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -72,7 +78,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="container upper-margin">
             @yield('content')
         </main>
     </div>
