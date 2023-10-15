@@ -11,14 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('grow_journal_entries', function (Blueprint $table) {
-
+        Schema::create('grow_journal_entry_images', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('journal_id');
-            $table->foreign('journal_id')->references('id')->on('grow_journals');
-            $table->date('entry_date');
-            $table->text('notes')->nullable();
-            $table->string('image_path')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('grow_journal_entries');
+        Schema::dropIfExists('grow_journal_entry_images');
     }
 };

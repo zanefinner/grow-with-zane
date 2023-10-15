@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class GrowJournalEntries extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'entry_date',
+        'notes',
+    ];
+    public function images()
+    {
+        return $this->hasMany(GrowJournalEntryImage::class, 'entry_id');
+    }
 }

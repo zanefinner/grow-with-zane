@@ -27,7 +27,7 @@ class GrowJournalController extends Controller
     {
         $data = $request->validate([
             'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
+            'notes' => 'nullable|string',
         ]);
 
         // Get the currently authenticated user
@@ -60,8 +60,8 @@ class GrowJournalController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
         ]);
-        
-        
+
+
         $growJournal = GrowJournals::findOrFail($id);
         $this->authorize('delete', $growJournal); // Pass $growJournal, not $id
         $growJournal->update($data);
