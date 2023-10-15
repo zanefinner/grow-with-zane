@@ -28,6 +28,7 @@ class JournalEntryController extends Controller
     {
         $data = $request->validate([
             'entry_date' => 'required|date',
+            'summary' => 'required|string',
             'notes' => 'nullable|string',
             'image_path' => 'nullable|string',
         ]);
@@ -57,6 +58,7 @@ class JournalEntryController extends Controller
     {
         $data = $request->validate([
             'entry_date' => 'required|date',
+            'summary' => 'required|string',
             'notes' => 'nullable|string',
             'image_path' => 'nullable|string',
         ]);

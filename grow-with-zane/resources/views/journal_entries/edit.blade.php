@@ -10,6 +10,10 @@
             <input type="date" class="form-control" id="entry_date" name="entry_date" value="{{ $entry->entry_date }}" required>
         </div>
         <div class="form-group">
+            <label for="summary">Summary</label>
+            <input type="text" class="form-control" id="summary" name="summary" value="{{ $entry->summary }}" required>
+        </div>
+        <div class="form-group">
             <label for="notes">Notes</label>
             <textarea class="form-control" id="notes" name="notes">{{ $entry->notes }}</textarea>
         </div>

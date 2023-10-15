@@ -10,12 +10,15 @@
                 <tr>
                     <th>Entry Date</th>
                     <th>Actions</th>
+                    <th>Summary</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($entries as $entry)
                     <tr>
                         <td>{{ $entry->entry_date }}</td>
+                        <td>{{ $entry->summary }}</td>
+                        <td>{{ $entry->notes }}</td>
                         <td>
                             <a href="{{ route('journal_entries.show', [$growJournal->id, $entry->id]) }}" class="btn btn-info">View</a>
                             <a href="{{ route('journal_entries.edit', [$growJournal->id, $entry->id]) }}" class="btn btn-primary">Edit</a>

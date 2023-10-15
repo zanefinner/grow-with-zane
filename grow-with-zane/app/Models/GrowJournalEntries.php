@@ -10,6 +10,7 @@ class GrowJournalEntries extends Model
     use HasFactory;
     protected $fillable = [
         'entry_date',
+        'summary',
         'notes',
     ];
     public function images()

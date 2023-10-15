@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('journal_id');
             $table->foreign('journal_id')->references('id')->on('grow_journals');
             $table->date('entry_date');
+            $table->text('summary')->nullable();
             $table->text('notes')->nullable();
             $table->string('image_path')->nullable();
             $table->timestamps();
