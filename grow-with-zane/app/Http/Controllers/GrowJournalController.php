@@ -27,6 +27,7 @@ class GrowJournalController extends Controller
     {
         $data = $request->validate([
             'title' => 'required|string|max:255',
+            'description' => 'required|string',
             'notes' => 'nullable|string',
         ]);
 

@@ -11,15 +11,17 @@
             <p class="card-text">Created At: {{ $growJournal->created_at }}</p>
             <p class="card-text">Updated At: {{ $growJournal->updated_at }}</p>
 
-            <a href="{{ route('grow_journals.edit', $growJournal->id) }}" class="btn btn-warning">Edit</a>
-            
-            <form action="{{ route('grow_journals.destroy', $growJournal->id) }}" method="POST" style="display: inline;">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this journal?')">Delete</button>
-            </form>
+            <a href="{{ route('journal_entries.index', $growJournal->id) }}" class="btn btn-warning">Entries</a>
+            @if (auth()->check() && $growJournal->user_id === auth()->user()->id)
+                        <a href="{{ route('grow_journals.edit', $growJournal->id) }}" class="btn btn-warning">Edit</a>
+                        @endif
+                        @if (auth()->check() && $growJournal->user_id === auth()->user()->id)
+                        <form action="{{ route('grow_journals.destroy', $growJournal->id) }}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this journal?')">Delete</button>
+                        @endif
 
-            <a href="{{ route('grow_journals.index') }}" class="btn btn-primary">Back to List</a>
         </div>
     </div>
 @endsection

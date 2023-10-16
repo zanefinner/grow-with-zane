@@ -15,11 +15,22 @@
                     </div>
                     <div class="card-footer d-flex justify-content-end">
                         <a href="{{ route('grow_journals.show', $journal->id) }}" class="btn btn-primary">View</a>
+
+                        @if (auth()->check() && $journal->user_id === auth()->user()->id)
                         <a href="{{ route('grow_journals.edit', $journal->id) }}" class="btn btn-warning">Edit</a>
+                        @endif
+                        @if (auth()->check() && $journal->user_id === auth()->user()->id)
                         <form action="{{ route('grow_journals.destroy', $journal->id) }}" method="POST" style="display: inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this journal?')">Delete</button>
+                        @endif
+
+
+
+
+
+
                         </form>
                     </div>
                 </div>
