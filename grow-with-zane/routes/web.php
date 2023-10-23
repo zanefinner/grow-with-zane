@@ -27,13 +27,47 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/grow_journals', [App\Http\Controllers\GrowJournalController::class, 'index'])->name('grow_journals.index');
-Route::get('/grow_journals/create', [App\Http\Controllers\GrowJournalController::class, 'create'])->name('grow_journals.create');
-Route::post('/grow_journals', [App\Http\Controllers\GrowJournalController::class, 'store'])->name('grow_journals.store');
-Route::get('/grow_journals/{id}', [App\Http\Controllers\GrowJournalController::class, 'show'])->name('grow_journals.show');
-Route::get('/grow_journals/{id}/edit', [App\Http\Controllers\GrowJournalController::class, 'edit'])->name('grow_journals.edit');
-Route::put('/grow_journals/{id}', [App\Http\Controllers\GrowJournalController::class, 'update'])->name('grow_journals.update');
-Route::delete('/grow_journals/{id}', [App\Http\Controllers\GrowJournalController::class, 'destroy'])->name('grow_journals.destroy');
+Route::get(
+    '/grow_journals',
+    [App\Http\Controllers\GrowJournalController::class,
+    'index'])
+    ->name('grow_journals.index'
+);
+Route::get(
+    '/grow_journals/create',
+    [App\Http\Controllers\GrowJournalController::class,
+    'create'])
+        ->name('grow_journals.create'
+);
+Route::post(
+    '/grow_journals',
+    [App\Http\Controllers\GrowJournalController::class,
+    'store'])
+    ->name('grow_journals.store'
+);
+Route::get(
+    '/grow_journals/{id}',
+    [App\Http\Controllers\GrowJournalController::class,
+    'show'])
+    ->name('grow_journals.show');
+Route::get(
+    '/grow_journals/{id}/edit',
+    [App\Http\Controllers\GrowJournalController::class,
+    'edit'])
+    ->name('grow_journals.edit'
+);
+Route::put(
+    '/grow_journals/{id}',
+    [App\Http\Controllers\GrowJournalController::class,
+    'update'])
+    ->name('grow_journals.update'
+);
+Route::delete(
+    '/grow_journals/{id}',
+    [App\Http\Controllers\GrowJournalController::class,
+    'destroy'])
+    ->name('grow_journals.destroy'
+);
 
 // Grow Journal Entries
 Route::get('/grow_journals/{id}/entries', [App\Http\Controllers\JournalEntryController::class, 'index'])->name('journal_entries.index');
