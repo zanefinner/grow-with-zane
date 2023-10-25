@@ -11,9 +11,11 @@
                     <th>Entry Date</th>
                     <th>Actions</th>
                     <th>Summary</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
+                
                 @foreach ($entries as $entry)
                     <tr>
                         <td>{{ $entry->entry_date }}</td>
