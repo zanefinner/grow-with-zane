@@ -77,3 +77,12 @@ Route::get('/grow_journals/{id}/entries/{entry_id}', [App\Http\Controllers\Journ
 Route::get('/grow_journals/{id}/entries/{entry_id}/edit', [App\Http\Controllers\JournalEntryController::class, 'edit'])->name('journal_entries.edit');
 Route::put('/grow_journals/{id}/entries/{entry_id}', [App\Http\Controllers\JournalEntryController::class, 'update'])->name('journal_entries.update');
 Route::delete('/grow_journals/{id}/entries/{entry_id}', [App\Http\Controllers\JournalEntryController::class, 'destroy'])->name('journal_entries.destroy');
+
+//Routes
+Route::get('/posts', [App\Http\Controllers\PostsController::class, 'index'])->name('posts.index');
+Route::get('/posts/create', [App\Http\Controllers\PostsController::class, 'create'])->name('posts.create');
+Route::post('/posts/{id}', [App\Http\Controllers\PostsController::class, 'store'])->name('posts.store');
+Route::get('/posts/{id}', [App\Http\Controllers\PostsController::class, 'show'])->name('posts.show');
+Route::get('/posts/{id}/edit', [App\Http\Controllers\PostsController::class, 'edit'])->name('posts.edit');
+Route::put('/posts/{id}/edit', [App\Http\Controllers\PostsController::class, 'update'])->name('posts.update');
+Route::delete('/posts/{id}', [App\Http\Controllers\PostsController::class, 'destroy'])->name('posts.destroy');

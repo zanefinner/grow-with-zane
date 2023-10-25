@@ -32,6 +32,10 @@
                                 </tr>
                                 <tr>
 
+                                    <td><a href="/posts">Community Posts</a></td>
+                                </tr>
+                                <tr>
+
                                     <td><a href="/grow_journals">Grow Journals</a></td>
                                 </tr>
                                 <!-- Add more rows or links as needed -->
